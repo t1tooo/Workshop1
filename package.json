@@ -1,0 +1,16 @@
+{
+  "name": "espresso-addict",
+  "type": "module",
+  "author": "Ironboy",
+  "version": "1.2.0",
+  "description": "A small text adventure - written in vanilla JS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
