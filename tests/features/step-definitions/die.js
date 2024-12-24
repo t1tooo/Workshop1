@@ -12,12 +12,18 @@ async function clickButton(driver, xpath, timeout = 5000) {
   await button.click();
 }
 
-Given('that I de {string}', async function (url) {
+Given('that the site I am at {string}', async function (url) {
   await this.driver.get(url);
 });
 
-When('I press wait i should loose 10 health', async function () {
+When('I repeatedly press "Wait" until my health is 0', async function () {
   const actions = [
+    "//menu[contains(@class, 'choices')]//li[contains(text(),'Wait')]",
+    "//menu[contains(@class, 'choices')]//li[contains(text(),'Wait')]",
+    "//menu[contains(@class, 'choices')]//li[contains(text(),'Wait')]",
+    "//menu[contains(@class, 'choices')]//li[contains(text(),'Wait')]",
+    "//menu[contains(@class, 'choices')]//li[contains(text(),'Wait')]",
+    "//menu[contains(@class, 'choices')]//li[contains(text(),'Wait')]",
     "//menu[contains(@class, 'choices')]//li[contains(text(),'Wait')]",
   ];
 
