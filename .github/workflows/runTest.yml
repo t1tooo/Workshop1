@@ -24,8 +24,10 @@ jobs:
 
       - name: Set up unique user-data-dir for tests
         run: |
-          mkdir -p ./tests/features/support/user-data-dir/${{ github.run_id }}
-          echo "USER_DATA_DIR=./tests/features/support/user-data-dir/${{ github.run_id }}" >> $GITHUB_ENV
+          # Generate a unique directory for each run
+          UNIQUE_DIR="./tests/features/support/user-data-dir/${{ github.run_id }}"
+          mkdir -p $UNIQUE_DIR
+          echo "USER_DATA_DIR=$UNIQUE_DIR" >> $GITHUB_ENV
 
       - name: Run Tests
         run: npm test
