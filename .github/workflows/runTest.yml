@@ -22,6 +22,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+
       - name: Set up unique user-data-dir for tests
         run: |
           # Generate a unique directory for each run
@@ -33,3 +34,8 @@ jobs:
         run: npm test
         env:
           USER_DATA_DIR: ${{ env.USER_DATA_DIR }}
+          
+   
+      - name: Clean up user data directory
+        run: rm -rf ${{ env.USER_DATA_DIR }}
+        if: always()  # Ensure cleanup happens even if tests fail
