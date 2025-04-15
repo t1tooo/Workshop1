@@ -4,6 +4,6 @@ Feature: Give Beer
 
   @giveBeer
   Scenario: Player gives beer
-    Given that I am at the localhost
+    Given that I am at the localhost site
     When I run through the game and get a beer
-    Then I should give it to the barista and I should revieve 2 free espressos from him
+    Then I should give it to the barista and I should receive 2 free espressos from him
