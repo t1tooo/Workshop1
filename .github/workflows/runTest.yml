@@ -31,3 +31,5 @@ jobs:
 
       - name: Run Tests
         run: npm test
+        env:
+          USER_DATA_DIR: ${{ env.USER_DATA_DIR }}
