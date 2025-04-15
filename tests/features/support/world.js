@@ -2,6 +2,9 @@ import seleniumWebdriver from 'selenium-webdriver';
 import { setWorldConstructor, setDefaultTimeout } from '@cucumber/cucumber';
 import { timeout, browser, headless } from '../../config.js';
 import chrome from 'selenium-webdriver/chrome.js';
+import os from 'os';
+import path from 'path';
+import { mkdtempSync } from 'fs';
 
 const options = new chrome.Options();
 
@@ -24,7 +27,9 @@ options.addArguments(
   '--safebrowsing-disable-auto-update'
 );
 
-
+// ✅ This creates a unique temporary user-data-dir for every session
+const tempProfileDir = mkdtempSync(path.join(os.tmpdir(), 'chrome-profile-'));
+options.addArguments(`--user-data-dir=${tempProfileDir}`);
 
 class CustomWorld {
   constructor() {
