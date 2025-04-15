@@ -22,5 +22,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Set up unique user-data-dir for tests
+        run: |
+          mkdir -p ./tests/features/support/user-data-dir/${{ github.run_id }}
+          echo "USER_DATA_DIR=./tests/features/support/user-data-dir/${{ github.run_id }}" >> $GITHUB_ENV
+
       - name: Run Tests
         run: npm test
