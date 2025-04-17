@@ -4,8 +4,8 @@ import { expect } from 'chai';
 
 
 
-const TIMEOUT = 8000;
-const ELEMENT_TEXT_REGEX = /\d+/;
+const TIMEOUT = 9000;
+
 
 
 

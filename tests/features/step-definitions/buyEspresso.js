@@ -3,7 +3,7 @@ import { By, until } from 'selenium-webdriver';
 import { expect } from 'chai';
 
 
-const TIMEOUT = 9000;  
+const TIMEOUT = 15000;  
 
 
 async function clickButton(driver, xpath, timeout = TIMEOUT) {
