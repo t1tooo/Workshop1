@@ -4,7 +4,8 @@ import { timeout, browser, headless } from '../../config.js';
 import chrome from 'selenium-webdriver/chrome.js';
 
 const options = new chrome.Options();
-headless && options.addArguments('--headless=new');
+headless && options.addArguments('--headless'); 
+
 
 class CustomWorld {
   constructor() {
