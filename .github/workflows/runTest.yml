@@ -22,15 +22,17 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      # Install Chrome dependencies
       - name: Install Chrome dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y wget
           sudo apt-get install -y unzip
-          sudo apt-get install -y fonts-liberation libappindicator3-1 libnss3 libxss1 libasound2
+          sudo apt-get install -y fonts-liberation libappindicator3-1 libnss3 libxss1 libasound2-dev
+          sudo apt-get install -y libgbm1 # Added dependency for Chrome to run
 
-  
+      # Run Cucumber Tests
       - name: Run Cucumber Tests
         run: npm run test
         env:
-          DISPLAY: :99 
+          DISPLAY: :99 # Sets up Xvfb (virtual display) for headless mode
