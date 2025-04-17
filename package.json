@@ -7,7 +7,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "cucumber-js tests/features --import tests/features/support --import tests/features/step-definitions --world-parameters {\\\"browserName\\\":\\\"chrome\\\"} --format json:tests/results/chrome.json",
+    "test": "cucumber-js tests/features --import tests/features/support --import tests/features/step-definitions --format json:tests/results/chrome.json",
     "report": "node ./generateReport"
   },
   "keywords": [],
