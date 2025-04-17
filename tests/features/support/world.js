@@ -8,11 +8,21 @@ headless && options.addArguments('--headless=new');
 
 class CustomWorld {
   constructor() {
-    this.driver = new seleniumWebdriver
+    this.driver = null;
+  }
+
+  async initDriver() {
+    this.driver = await new seleniumWebdriver
       .Builder()
       .setChromeOptions(options)
       .forBrowser(browser)
       .build();
+  }
+
+  async quitDriver() {
+    if (this.driver) {
+      await this.driver.quit();
+    }
   }
 }
 
