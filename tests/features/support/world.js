@@ -5,7 +5,6 @@ import chrome from 'selenium-webdriver/chrome.js';
 
 const options = new chrome.Options();
 headless && options.addArguments('--headless=new');
-options.addArguments('--disable-user-data-dir'); 
 
 class CustomWorld {
   constructor() {
@@ -16,7 +15,7 @@ class CustomWorld {
     this.driver = await new seleniumWebdriver
       .Builder()
       .setChromeOptions(options)
-      .forBrowser(browser)  
+      .forBrowser(browser)
       .build();
   }
 
