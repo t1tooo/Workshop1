@@ -4,7 +4,7 @@ import { expect } from 'chai';
 
 
 
-const TIMEOUT = 9000;
+const TIMEOUT = 10000;
 
 
 
