@@ -1,30 +1,35 @@
-import seleniumWebdriver from 'selenium-webdriver';
+import { Builder } from 'selenium-webdriver';
 import { setWorldConstructor, setDefaultTimeout } from '@cucumber/cucumber';
-import { timeout, browser, headless } from '../../config.js';
 import chrome from 'selenium-webdriver/chrome.js';
-import os from 'os';
-import fs from 'fs';
-import path from 'path';
+import { timeout, browser, headless } from '../../config.js';
 
+// Set the default timeout for Cucumber
+setDefaultTimeout(timeout);
+
+// Configure Chrome options
 const options = new chrome.Options();
 
+// Optionally, enable headless mode if needed
+if (headless) {
+  options.addArguments('--headless=new');
+}
 
-const userDataDir = path.join(os.tmpdir(), `chrome-profile-${Date.now()}-${Math.floor(Math.random() * 10000)}`);
-fs.mkdirSync(userDataDir, { recursive: true });
-options.addArguments(`--user-data-dir=${userDataDir}`);
+// Add other Chrome options that help with stability
+options.addArguments('--disable-dev-shm-usage');
+options.addArguments('--no-sandbox');
+options.addArguments('--disable-gpu'); // Disable GPU hardware acceleration in headless mode
+options.addArguments('--incognito');  // Use incognito mode to avoid saving session data
 
-
-headless && options.addArguments('--headless=new');
-
+// Custom World constructor for each test scenario
 class CustomWorld {
   constructor() {
-    this.driver = new seleniumWebdriver
-      .Builder()
+    // Initialize the WebDriver for each test
+    this.driver = new Builder()
       .setChromeOptions(options)
       .forBrowser(browser)
       .build();
   }
 }
 
-setDefaultTimeout(timeout);
+// Set the world constructor in Cucumber
 setWorldConstructor(CustomWorld);
