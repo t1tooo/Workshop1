@@ -22,5 +22,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install Chrome dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget
+          sudo apt-get install -y unzip
+          sudo apt-get install -y fonts-liberation libappindicator3-1 libnss3 libxss1 libasound2
+
+  
       - name: Run Cucumber Tests
         run: npm run test
+        env:
+          DISPLAY: :99 
