@@ -22,20 +22,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-
-      - name: Set up unique user-data-dir for tests
-        run: |
-          # Generate a unique directory for each run
-          UNIQUE_DIR="./tests/features/support/user-data-dir/${{ github.run_id }}"
-          mkdir -p $UNIQUE_DIR
-          echo "USER_DATA_DIR=$UNIQUE_DIR" >> $GITHUB_ENV
-
-      - name: Run Tests
+      - name: Run Cucumber Tests
         run: npm test
-        env:
-          USER_DATA_DIR: ${{ env.USER_DATA_DIR }}
-          
-   
-      - name: Clean up user data directory
-        run: rm -rf ${{ env.USER_DATA_DIR }}
-        if: always()  # Ensure cleanup happens even if tests fail
