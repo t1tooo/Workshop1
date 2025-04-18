@@ -22,9 +22,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Cucumber Tests Without User Data Dir
-        run: npm run test -- --disable-extensions
-
       - name: Run Cucumber Tests
         run: npm run test
-
