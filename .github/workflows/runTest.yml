@@ -22,11 +22,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Set unique user data directory
-        run: |
-          export USER_DATA_DIR=$(mktemp -d)
-          echo "Created user data directory at $USER_DATA_DIR"
-          npm run test -- --user-data-dir=$USER_DATA_DIR
-
-      - name: Run Cucumber Tests
-        run: npm run test
+      - name: Run Cucumber Tests Without User Data Dir
+        run: npm run test -- --disable-extensions
+      
